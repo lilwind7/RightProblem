@@ -16,27 +16,7 @@ You do not need to understand prompts, agents, or programming.
 
 The first question pushes you toward a yes-or-no answer. The second helps you understand what you actually need and whether quitting is the right way to get it.
 
-## Try it now — no installation
-
-Copy the text below into ChatGPT, Claude, Gemini, or almost any other AI assistant. Replace the last line with your own question.
-
-```text
-Before answering my question, help me find the question I most need to answer.
-
-Look past the way I first described the problem. Work out what result I actually want, which assumptions I may be making, and whether the solution I mentioned is really necessary. Consider several genuinely different questions, then give me only:
-
-1. What I’m really trying to achieve
-2. The one question I should answer first
-3. Why starting with that question would help more
-
-Use plain language. If my request is simply factual, answer it normally.
-
-My question: [write your question here]
-```
-
-That is enough to experience RightQuestion. Nothing needs to be downloaded.
-
-## Keep it in your AI assistant
+## Install it in your AI assistant
 
 If your AI assistant supports Agent Skills, send it this message and let it handle the installation:
 
@@ -51,8 +31,6 @@ $skill-installer Install right-question from https://github.com/lilwind7/RightQu
 ```
 
 After installation, ask naturally or start with `$right-question` in Codex and `/right-question` in Claude Code or Cursor.
-
-ChatGPT web and mobile users can use the no-install text above. [OpenAI's skill documentation](https://developers.openai.com/codex/skills/) currently describes standalone skills for the ChatGPT desktop app and Codex; broadly installable workflows on web and mobile are distributed as plugins.
 
 Need host-specific or manual instructions? See [Installation guide](INSTALL.md).
 

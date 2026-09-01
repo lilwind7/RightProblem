@@ -1,9 +1,5 @@
 # 安装指南
 
-体验 RightQuestion 不需要安装。[中文 README](README.zh-CN.md) 里的“免安装版”可以直接复制到几乎任何 AI 对话中。
-
-只有当你希望 AI 以后一直记得并自动使用这套方法时，才需要安装 Skill。
-
 ## 最简单：让 AI 自己安装
 
 把下面这句话发给能够管理 Agent Skills 和本地文件的 AI 助手：

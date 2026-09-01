@@ -16,27 +16,7 @@
 
 第一个问题把你推向“辞”或“不辞”。第二个问题先帮你看清自己真正需要什么，以及辞职是不是最合适的办法。
 
-## 现在就用，不用安装
-
-复制下面整段话，粘贴给 ChatGPT、Claude、Gemini、DeepSeek、豆包或其他 AI。最后一行换成你自己的问题即可。
-
-```text
-先不要直接回答我的问题。请先帮我找到：为了得到我真正想要的结果，我现在最应该回答的那一个问题。
-
-请跳出我最初描述问题的方式，分清我真正想要什么、我做了哪些假设、我提到的方案是否真的必要。请从几个不同方向思考，但最后只告诉我：
-
-1. 我真正想实现什么
-2. 我最应该先回答的一个问题
-3. 为什么先回答它会更有帮助
-
-请使用简单、自然的语言。如果我问的只是一个事实，就正常回答。
-
-我的问题是：[把你的问题写在这里]
-```
-
-这样就能体验 RightQuestion，不需要下载任何东西。
-
-## 让你的 AI 以后一直会用
+## 安装到你的 AI 助手
 
 如果你的 AI 助手支持 Agent Skills，把下面这句话发给它，让它自己完成安装：
 
@@ -51,8 +31,6 @@ $skill-installer 请从 https://github.com/lilwind7/RightQuestion 安装 right-q
 ```
 
 安装后可以直接自然地描述困惑；在 Codex 中也可以用 `$right-question`，在 Claude Code 或 Cursor 中可以用 `/right-question`。
-
-ChatGPT 网页版和手机版用户可以直接使用上面的“免安装版”。[OpenAI 的 Skill 文档](https://developers.openai.com/codex/skills/)目前把独立 Skill 用于 ChatGPT 桌面应用和 Codex；要覆盖网页和手机端，需要通过插件分发。
 
 需要针对不同 Agent 的具体说明，或者想手动安装？请查看[安装指南](INSTALL.zh-CN.md)。
 

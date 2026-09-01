@@ -1,9 +1,5 @@
 # Installation guide
 
-You do not need to install RightQuestion to try it. The copy-and-paste version in [README.md](README.md) works in almost any AI chat.
-
-Install the Skill only if you want your assistant to remember the method and use it again later.
-
 ## The easiest method: ask your assistant
 
 Paste this into an AI assistant that can manage Agent Skills and local files:
