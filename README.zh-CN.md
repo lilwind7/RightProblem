@@ -1,112 +1,95 @@
 <h1 align="center">RightQuestion</h1>
 
-<p align="center"><strong>不要优化眼前的问题，去找到真正值得回答的问题。</strong></p>
+<p align="center"><strong>别急着让 AI 给答案，先确认你回答的是那个真正重要的问题。</strong></p>
 
 <p align="center"><a href="README.md">English</a></p>
 
-RightQuestion 是一个可跨 Agent 使用的 [Agent Skill](https://agentskills.io/)。它不只是改写用户的问题，而是把真实目标与原始表述、假设、方案分开，找到此刻最值得回答、最能推动目标的问题。
+当你正在纠结、选不出来，或者已经很努力却迟迟没有进展时，RightQuestion 会让 AI 暂时跳出你最初的问法，帮你找到此刻最值得回答的那一个问题。
 
-## 它带来的变化
+你不需要懂提示词、Agent，也不需要会编程。
 
-> **原问题：** 每个数据库操作都应该使用事务吗？
+## 看看它有什么不同
+
+> **你问：** 我该不该辞职？
 >
-> **RightQuestion：** 哪些关键业务路径中的多步操作，可能进入部分完成状态，并造成不可接受且无法自愈的后果？
+> **RightQuestion 会问：** 你希望工作发生的哪些重要改变，只有离开这家公司才能实现？
 
-后一个问题能真正支撑技术选择：应该使用事务、幂等、补偿、状态机，还是接受短暂不一致。它找到的是决定方案的业务后果，而不是继续围绕某个方案打转。
+第一个问题把你推向“辞”或“不辞”。第二个问题先帮你看清自己真正需要什么，以及辞职是不是最合适的办法。
 
-## 30 秒安装
+## 现在就用，不用安装
 
-下载或克隆本仓库后运行：
-
-```bash
-python3 scripts/install.py
-```
-
-Windows：
-
-```powershell
-py scripts/install.py
-```
-
-默认会为当前用户安装 Codex、Claude Code、Cursor 和 Gemini CLI 四个版本；已有安装不会被静默覆盖。
-
-只安装某个 Agent，或安装到当前项目：
-
-```bash
-python3 scripts/install.py --agent claude
-python3 scripts/install.py --agent universal
-python3 scripts/install.py --scope project --agent all
-```
-
-开发时使用软链接、预览操作、安全更新或卸载：
-
-```bash
-python3 scripts/install.py --agent codex --method link
-python3 scripts/install.py --dry-run
-python3 scripts/install.py --force
-python3 scripts/install.py --uninstall
-```
-
-`--force` 会先把旧版本移动到 `.right-question-backups`，再安装新版。运行 `python3 scripts/install.py --help` 可查看全部选项。
-
-## 怎么使用
-
-支持自动选择 Skill 的 Agent 可以直接理解自然语言；也可以显式调用：
-
-| Agent | 示例 |
-| --- | --- |
-| Codex | `$right-question 我们应该做一个 App 吗？` |
-| Claude Code | `/right-question 我们应该做一个 App 吗？` |
-| Cursor | `/right-question 我们应该做一个 App 吗？` |
-| Gemini CLI | `请使用 right-question skill：我们应该做一个 App 吗？` |
-
-适合输入的问题包括：
-
-- `这个产品应该用微服务吗？`
-- `怎样更快地增长我的 newsletter？`
-- `我们总是延期，应该改变什么？`
-- `我拿到了三个 offer，该怎么选？`
-- `帮我找到做这个决定前最应该回答的问题。`
-
-默认输出保持克制：
+复制下面整段话，粘贴给 ChatGPT、Claude、Gemini、DeepSeek、豆包或其他 AI。最后一行换成你自己的问题即可。
 
 ```text
-真实目标
+先不要直接回答我的问题。请先帮我找到：为了得到我真正想要的结果，我现在最应该回答的那一个问题。
+
+请跳出我最初描述问题的方式，分清我真正想要什么、我做了哪些假设、我提到的方案是否真的必要。请从几个不同方向思考，但最后只告诉我：
+
+1. 我真正想实现什么
+2. 我最应该先回答的一个问题
+3. 为什么先回答它会更有帮助
+
+请使用简单、自然的语言。如果我问的只是一个事实，就正常回答。
+
+我的问题是：[把你的问题写在这里]
+```
+
+这样就能体验 RightQuestion，不需要下载任何东西。
+
+## 让你的 AI 以后一直会用
+
+如果你的 AI 助手支持 Agent Skills，把下面这句话发给它，让它自己完成安装：
+
+```text
+请把 https://github.com/lilwind7/RightQuestion 里的 right-question Agent Skill 安装到我的个人技能中。安装后请验证它可以使用，并告诉我最简单的用法。除非你确实无法完成，否则不要让我自己运行终端命令。
+```
+
+如果你使用 Codex，可以直接在对话框粘贴：
+
+```text
+$skill-installer 请从 https://github.com/lilwind7/RightQuestion 安装 right-question
+```
+
+安装后可以直接自然地描述困惑；在 Codex 中也可以用 `$right-question`，在 Claude Code 或 Cursor 中可以用 `/right-question`。
+
+ChatGPT 网页版和手机版用户可以直接使用上面的“免安装版”。[OpenAI 的 Skill 文档](https://developers.openai.com/codex/skills/)目前把独立 Skill 用于 ChatGPT 桌面应用和 Codex；要覆盖网页和手机端，需要通过插件分发。
+
+需要针对不同 Agent 的具体说明，或者想手动安装？请查看[安装指南](INSTALL.zh-CN.md)。
+
+## 它适合什么时候用
+
+- “我该不该辞职？”
+- “三个 offer 应该选哪个？”
+- “我要不要再买一门课？”
+- “为什么我已经很努力，却一直没有进展？”
+- “这个很大的目标，我应该从哪里开始？”
+- “我是不是一直在解决错误的问题？”
+
+工作、学习、金钱与时间安排、习惯、关系、创作、经营和技术选择都可以使用。它最适合那些“一旦问题问错，答案越快反而走得越偏”的时刻。
+
+## 它会给你什么
+
+默认回答很短：
+
+```text
+你真正想实现什么
 ...
 
-最高杠杆问题
+最应该先回答的问题
 ...
 
-为什么是这个问题
+为什么先回答它
 ...
 ```
 
-## 兼容性
+它不会用一堆思考模型轰炸你，也不会列出十个看起来差不多的问题。
 
-RightQuestion 遵循开放的 Agent Skills 格式，不依赖工具或网络。
+## Agent Skill 是什么
 
-| Agent | 用户级目录 | 项目级目录 | 官方文档 |
-| --- | --- | --- | --- |
-| Codex | `~/.agents/skills/right-question` | `.agents/skills/right-question` | [Build skills](https://developers.openai.com/codex/skills/) |
-| Claude Code | `~/.claude/skills/right-question` | `.claude/skills/right-question` | [Extend Claude with skills](https://code.claude.com/docs/en/skills) |
-| Cursor | `~/.cursor/skills/right-question` | `.cursor/skills/right-question` | [Agent Skills](https://cursor.com/docs/skills) |
-| Gemini CLI | `~/.gemini/skills/right-question` | `.gemini/skills/right-question` | [Managing Agent Skills](https://geminicli.com/docs/cli/using-agent-skills/) |
-| 通用目录 | `~/.agents/skills/right-question` | `.agents/skills/right-question` | Codex、Cursor、Gemini CLI 均支持 |
-
-如果正在运行的 Agent 没有立即发现新 Skill，请重新加载 Skills 或重启 Agent。
-
-## 它是怎么工作的
-
-1. 还原结果目标、事实证据、真实约束、原因假设和用户提出的方案。
-2. 暂时丢开原问题，不把当前框架当作事实。
-3. 从根因、瓶颈、风险、价值、行为等不同层面生成真正竞争的问题。
-4. 按因果重要性、信息增益、行动影响和调查成本排序，以目标杠杆为最高标准。
-5. 返回一个问题：如果只能可靠回答一个，哪个最能提高实现目标的概率？
-
-详细思考模型和校准示例位于 `references/`，只有需要时才加载，避免占用默认上下文。
+Agent Skill 可以理解为一份 AI 在需要时会自动拿出来使用的“做事方法”。RightQuestion 遵循开放的 [Agent Skills](https://agentskills.io/) 格式，可以在 Codex、Claude Code、Cursor 和 Gemini CLI 中使用，也不需要访问你的文件、账号或网络。
 
 ## 参与贡献
 
-欢迎补充真实案例、改进触发边界、增加 Agent 兼容性或翻译。提交修改前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+欢迎补充日常案例、改进表达与无障碍体验、增加翻译或修复兼容性问题。详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 本项目采用 [MIT License](LICENSE)。

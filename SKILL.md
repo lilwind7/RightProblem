@@ -1,104 +1,107 @@
 ---
 name: right-question
-description: Reframe solution-first, narrow, or possibly misframed requests into the single question whose answer would most improve the user's chance of reaching the real goal. Use for “Should I use X?”, “How do I implement Y?”, stuck decisions, plans, diagnoses, and broad goals where the stated question may not target the real bottleneck. Skip straightforward factual or execution requests whose framing is not materially limiting progress.
+description: Help people find the one question that matters most before they decide or act. Use when someone feels stuck, is choosing between options, keeps trying without progress, asks “Should I do X?”, or may be solving the wrong problem—in work, life, learning, relationships, creative projects, business, or technical decisions. Skip simple factual questions and clear execution requests.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # RightQuestion
 
-Find the question the user should answer next, not a polished version of the question they happened to ask.
+Help the user find the question they most need to answer, not merely a cleaner version of the question they happened to ask.
 
-Treat the input as evidence about the goal, context, assumptions, and current theory of the problem. Preserve the actual outcome and real constraints; everything else—including the named solution and vocabulary—is provisional.
+The user's first question is a clue. It may mix together what they want, what they know, what they assume, and a solution they already have in mind. Keep the result they care about and any real constraints, but let the question itself change completely when that would help more.
 
-## Decide whether reframing helps
+## When to use
 
-Apply this method when a different question could materially change the next decision or improve the chance of success. Typical signals include:
+Use this skill when the user:
 
-- a proposed solution disguised as a question: “Should I use X?”
-- a narrow implementation question with an unstated business or engineering consequence
-- repeated effort without progress
-- a broad goal with no identified bottleneck
-- a decision dominated by an untested assumption, risk, or incentive
+- asks “Should I do X?” or “Which option should I choose?”
+- feels stuck, conflicted, overwhelmed, or unsure where to start
+- keeps working on something without getting the result they want
+- asks for tactics before the real obstacle is clear
+- may be treating one possible solution as the only solution
 
-Do not force reframing onto a straightforward request for facts or execution when there is no meaningful external goal to optimize. Answer that request normally.
+Do not force this process onto a simple request for a fact or a clearly defined task. Answer those normally.
 
 ## Method
 
-### 1. Reconstruct the real goal
+### 1. Find the result behind the question
 
 Separate the input into:
 
-- desired outcome
-- current evidence and real constraints
-- assumptions about causes
-- proposed solution
-- explicit question
+- what the user ultimately wants to be different
+- what is known about the current situation
+- real constraints that cannot be ignored
+- guesses about why the problem exists
+- solutions already being considered
+- the question the user explicitly asked
 
 Ask internally:
 
-> If the original question were answered perfectly, what result would the user hope to achieve?
+> If the user got a perfect answer to their original question, what would they hope becomes better afterward?
 
-Treat inferred goals as uncertain. If multiple plausible goals would produce materially different questions and choosing incorrectly would be costly, ask one concise clarifying question. Otherwise continue and label the inference.
+Treat an inferred goal as uncertain. Ask one short clarifying question only when different plausible goals would lead to very different questions and a wrong guess would matter. Otherwise continue and make the uncertainty visible.
 
-### 2. Reopen the problem space
+### 2. Loosen the original framing
 
-Temporarily discard the explicit question. Treat the framing, proposed solution, named concepts, and stated problem level as hypotheses rather than constraints.
+Temporarily set aside the explicit question. Do not assume that the named solution is necessary, that the suspected cause is correct, or that the problem exists at the level where the user described it.
 
-Keep only evidence, the desired outcome, and real-world constraints. The final question may use completely different concepts and vocabulary.
+Keep the desired result, relevant evidence, and real constraints. Reopen everything else.
 
-### 3. Generate genuinely competing questions
+### 3. Consider different questions
 
-Internally consider several distinct explanations for what most limits progress—for example root cause, bottleneck, behavior, incentives, risk, value, capability, or implementation. Generate a diverse candidate set when the problem supports it; do not create cosmetic paraphrases.
+Internally generate genuinely different candidates. Look across possible root causes, current obstacles, behavior, incentives, risks, value, capabilities, and next steps when relevant. Do not generate a list of paraphrases.
 
-For broad or difficult problems where the candidates converge too quickly, read [references/lenses.md](references/lenses.md) and use only the lenses that create meaningfully different views.
+For a broad or difficult situation where the candidates are too similar, read [references/lenses.md](references/lenses.md) and use only the perspectives that open a meaningfully different path.
 
-### 4. Select by goal leverage
+### 4. Choose the question that changes the most
 
-Choose the candidate whose reliable answer would most improve the probability of reaching the goal. Consider:
+Prefer the question whose reliable answer would most improve the user's chance of getting the result they want. Consider:
 
-- causal importance
-- decision-relevant information gain
-- proximity to a root cause
-- ability to change the next action
-- investigation cost
+- how strongly the answer affects the outcome
+- how uncertain and important the answer currently is
+- whether it would change what the user does next
+- whether it gets closer to the reason the problem exists
+- whether answering it is worth the effort
 
-Goal leverage dominates the other criteria. Apply this final test:
+Apply this final test:
 
-> If the user could get a reliable answer to only one question before acting, which answer would most improve their chance of success?
+> If the user could get a trustworthy answer to only one question before acting, which answer would help them most?
 
-### 5. Return one question
+### 5. Respond simply
 
-Use the user's language unless they ask otherwise. By default, return:
+Use the user's language and everyday words. Translate the output labels naturally when needed. Do not mention frameworks or internal scoring unless asked.
 
-**Underlying goal**
+By default, return:
 
-[One concise sentence. Mark uncertainty when inferred.]
+**What you’re really trying to achieve**
 
-**Highest-leverage question**
+[One short sentence. Mark uncertainty when inferred.]
+
+**The question to answer first**
 
 [One question.]
 
-**Why this question**
+**Why start here**
 
-[A brief explanation of why its answer advances the goal more than the original question.]
+[A brief explanation of how the answer would help more than the original question.]
 
-Follow an explicit request for a shorter format. Include at most two alternatives, and only when they represent genuinely different high-value paths. Do not expose the full candidate set, model inventory, or scoring process unless asked.
+Follow an explicit request for a shorter format. Include at most two alternatives, and only when they point to genuinely different, valuable paths. Do not show the full candidate set.
 
 ## Guardrails
 
-- Do not merely improve wording or make the original question broader.
-- Do not preserve a proposed solution just because the user named it.
-- Do not discard explicit constraints or override a goal the user clearly chose.
-- Move a narrow technical question upward only when the higher-level consequence changes the technical choice.
-- Ask for clarification only when ambiguity is both material and costly; useful uncertainty can remain visible in the output.
-- Return the question rather than solving the entire underlying problem, unless the user also asks to continue.
+- Do not merely polish, broaden, or make the original question sound smarter.
+- Do not keep a proposed solution just because the user mentioned it first.
+- Do not ignore goals or constraints the user clearly stated.
+- Do not turn the response into a lecture or a display of reasoning frameworks.
+- Ask for clarification only when the ambiguity is both important and costly.
+- Return the question rather than solving the whole problem unless the user also asks to continue.
 
-When calibration is useful, or when the boundary between reframing and paraphrasing is unclear, read [references/examples.md](references/examples.md).
+When the difference between a paraphrase and a useful new question is unclear, read [references/examples.md](references/examples.md).
 
 ## Success criterion
 
-The result should make the user think:
+The user should feel:
 
-> That's not what I originally asked, but that's actually the question I need to answer.
+> I came looking for an answer, but this is the question I actually needed.

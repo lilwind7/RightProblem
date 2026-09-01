@@ -1,45 +1,57 @@
 # Calibration examples
 
-These examples show the distance between paraphrasing and useful reframing. Adapt the reasoning, not the wording.
+These examples show how RightQuestion moves from the first question to the question that matters more. Adapt the reasoning, not the wording.
 
-## Solution-first product decision
+## A career decision
 
-**Input:** “Should we build a mobile app?”
+**Input:** “Should I quit my job?”
 
-**Likely goal:** Increase repeat customer engagement.
+**Likely goal:** Build a working life that is healthier, more meaningful, or more sustainable.
 
-**Weak paraphrase:** “Would a mobile app improve customer engagement?”
+**Weak paraphrase:** “Would quitting my job make me happier?”
 
-**Higher-leverage question:** “What recurring customer job is currently painful enough that people would repeatedly choose a dedicated experience over the channels they already use?”
+**Better question:** “Which important change you want from your working life can only be achieved by leaving this job?”
 
-The better question tests whether the proposed solution has a durable reason to exist.
+The better question reveals both the real need and whether resignation is actually the right route.
 
-## Narrow technical decision
+## Buying another course
 
-**Input:** “Should every database operation use a transaction?”
+**Input:** “Should I buy this course?”
 
-**Likely goal:** Prevent harmful data inconsistency.
+**Likely goal:** Make real progress in learning a skill or changing direction.
 
-**Weak paraphrase:** “Which operations need transactions?”
+**Weak paraphrase:** “Is this course worth the money?”
 
-**Higher-leverage question:** “Which multi-step operations on critical business paths can enter a partially completed state that causes unacceptable and non-self-recoverable consequences?”
+**Better question:** “What is currently stopping you from making progress, and is missing knowledge really the main obstacle?”
 
-The answer creates a basis for choosing among transactions, idempotency, compensation, state machines, or temporary inconsistency.
+The answer may point to a course, but it may instead reveal a need for practice, feedback, time, confidence, or a clearer goal.
 
-## Broad stalled goal
+## Working hard without progress
 
-**Input:** “How can I grow my newsletter faster?”
+**Input:** “How can I work harder and finally get ahead?”
 
-**Likely goal:** Build a larger audience that continues to engage.
+**Likely goal:** See meaningful progress from the time and energy being invested.
 
-**Weak paraphrase:** “Which growth tactics should I try?”
+**Weak paraphrase:** “How can I become more productive?”
 
-**Higher-leverage question:** “At which step—discovery, signup, first-value experience, or ongoing retention—are otherwise suitable readers dropping out most, and why?”
+**Better question:** “Which part of your current effort contributes least to the result you actually care about?”
 
-The better question locates the current constraint before prescribing acquisition tactics.
+The better question tests whether more effort is needed at all.
 
-## Factual boundary
+## Choosing between options
+
+**Input:** “Which of these three job offers should I take?”
+
+**Likely goal:** Choose the next role without regretting the tradeoffs later.
+
+**Weak paraphrase:** “Which offer is best overall?”
+
+**Better question:** “Which difference between these roles will still matter to your life two years from now, after salary and first impressions stop feeling new?”
+
+The better question identifies the lasting tradeoff instead of pretending one option is best in every way.
+
+## A factual request
 
 **Input:** “What is the capital of Belgium?”
 
-Answer the factual question directly. There is no useful external goal to recover and no reason to manufacture one.
+Answer the factual question directly. There is no useful hidden decision to uncover.

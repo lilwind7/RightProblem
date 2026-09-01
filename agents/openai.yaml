@@ -1,6 +1,6 @@
 interface:
   display_name: "RightQuestion"
-  short_description: "Find the question that unlocks the real goal"
-  default_prompt: "Use $right-question to find the one question I should answer before deciding what to do next."
+  short_description: "Find the one question that matters most right now"
+  default_prompt: "Use $right-question to help me find the one question I should answer before I decide what to do."
 policy:
   allow_implicit_invocation: true
