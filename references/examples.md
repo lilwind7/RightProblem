@@ -22,7 +22,7 @@ The better question reveals both the real need and whether resignation is actual
 
 **Weak paraphrase:** “Is this course worth the money?”
 
-**Better question:** “What is currently stopping you from making progress, and is missing knowledge really the main obstacle?”
+**Better question:** “What is the main obstacle currently preventing you from making progress?”
 
 The answer may point to a course, but it may instead reveal a need for practice, feedback, time, confidence, or a clearer goal.
 
