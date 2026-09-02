@@ -18,11 +18,11 @@
 $skill-installer 请从 https://github.com/lilwind7/RightQuestion 安装 right-question
 ```
 
-如果没有立即出现，重启一次 Codex。之后可以使用 `$right-question`，也可以直接自然地描述问题。
+如果没有立即出现，重启一次 Codex。之后可以使用 `$right-question`，也可以直接自然地描述任务；Agent 会在必要时重新确定问题，然后继续完成工作。
 
 ## Claude Code 和 Cursor
 
-把上面的通用安装请求发给 Agent 即可。两者都支持 `SKILL.md`，并能把文件放入正确的个人技能目录。安装后使用 `/right-question`，或者直接自然地描述问题。
+把上面的通用安装请求发给 Agent 即可。两者都支持 `SKILL.md`，并能把文件放入正确的个人技能目录。安装后使用 `/right-question`，或者直接自然地描述任务；Agent 会在必要时重新确定问题，然后继续完成工作。
 
 ## Gemini CLI
 

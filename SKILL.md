@@ -1,160 +1,157 @@
 ---
 name: right-question
-description: Help people find the one question that matters most before they decide or act. Use when someone feels stuck, is choosing between options, keeps trying without progress, asks “Should I do X?”, or may be solving the wrong problem—in work, life, learning, relationships, creative projects, business, or technical decisions. Skip simple factual questions and clear execution requests.
+description: Reframe a potentially misframed request into the real problem that best serves the user's intended outcome, then continue to answer, decide, diagnose, plan, create, or execute until that problem is handled. Use when wording, a proposed solution, an assumed cause, or a limited option set may point the agent at the wrong work, including stuck decisions and repeated effort without progress. Skip simple factual requests and well-framed execution tasks.
 license: MIT
 metadata:
-  version: "1.2.0"
+  version: "2.0.0"
 ---
 
 # RightQuestion
 
-Find the question the user most needs to answer, not merely a cleaner version of the question they happened to ask.
+Turn the user's request into the right working problem, then solve it.
 
-Keep the experience simple without simplifying the reasoning. Work broadly and rigorously internally; expose only the result that helps the user move forward. The user's first question is evidence about their goal, situation, assumptions, and current theory of the problem—not a boundary the final question must stay inside.
+Reframing is an internal routing step, not the default deliverable. The transformed problem replaces the original framing as the agent's working target; it is not merely another question the user must answer before the agent starts working. Keep the experience simple without simplifying the reasoning, and continue until the intended task is handled as fully as the available context, capabilities, and authorization allow.
 
 ## When to use
 
-Use this skill when a different question could materially change the user's decision or improve their chance of reaching the desired outcome. Typical signals include:
+Use this skill when a different problem formulation could materially change the work or improve the chance of achieving the user's intended outcome. Typical signals include:
 
-- “Should I do X?” or “Which option should I choose?”
-- feeling stuck, conflicted, overwhelmed, or unsure where to start
+- a proposed solution disguised as the task: “Should I do X?”
+- a narrow tactic or implementation request made before the real obstacle is known
+- an assumed cause presented without evidence
+- a choice artificially limited to the options named by the user
 - repeated effort without meaningful progress
-- a tactic or implementation request made before the real obstacle is clear
-- a proposed solution being treated as the only available solution
 - a decision dominated by an untested assumption, risk, incentive, or bottleneck
 
-Do not force reframing onto a straightforward factual request or clearly defined execution task whose framing does not limit progress. Answer those normally.
+Do not force reframing onto a straightforward fact request or a well-framed execution task. When the original framing is already useful, carry it out normally. Explicit invocation of this skill still permits the conclusion that no reframing is needed.
 
 ## Method
 
-### 1. Reconstruct the outcome and decision
+### 1. Recover the intended outcome and delivery contract
 
-Separate the user's input into:
+Separate the input into:
 
-- the outcome they ultimately want
+- the outcome the user ultimately wants
 - what success would look like, including any relevant time horizon
+- the type of work requested: answer, explanation, recommendation, decision, diagnosis, plan, research, creation, change, or other execution
 - current evidence and known facts
 - real constraints that must be respected
 - assumptions about causes or consequences
 - proposed solutions or favored options
-- the immediate decision or action being blocked
-- the explicit question they asked
+- the immediate action or decision being requested
 
 Ask internally:
 
-> If the original question were answered perfectly, what result would the user hope becomes better afterward?
+> If the literal request were completed perfectly, what real-world result would the user hope becomes better afterward?
 
-Distinguish the underlying outcome from a proxy, tactic, metric, convention, or borrowed expectation. Do not replace a goal the user clearly chose. Treat inferred goals as uncertain.
+Distinguish the intended outcome from a proxy, tactic, metric, convention, or borrowed expectation. Do not replace a goal the user clearly chose.
 
-Ask one concise clarifying question only when multiple plausible goals would produce materially different winning questions and choosing the wrong goal would be costly. When clarification is necessary, return only that question in the current turn; it is an input to the method, not the final winning question. Resume the full process after the user answers. Otherwise continue and make important uncertainty visible.
+Preserve the user's delivery contract. A request to implement something should still result in implementation; a request for a recommendation should still result in a recommendation. Reframing may change what work best satisfies the request, but it must not silently downgrade execution into advice or turn the task into homework for the user.
 
-### 2. Reopen the problem space
+Reframing also does not expand authorization. Preserve the original scope, side-effect boundaries, explicit constraints, and required approvals.
 
-Temporarily remove the explicit question from consideration. Treat the following as hypotheses rather than constraints:
+### 2. Clarify only when necessary
 
-- the user's wording and named concepts
+Treat inferred goals as uncertain. Ask one concise clarifying question only when plausible goals would lead to materially different work and choosing incorrectly would be costly, difficult to reverse, or likely to invalidate the result.
+
+When clarification is truly required, return only the blocking question in the current turn and resume the full workflow after the user answers. For noncritical gaps, state a reasonable assumption and continue. Do not ask the user to answer an internal diagnostic question when the agent can investigate or reason through it itself.
+
+### 3. Reopen the problem space
+
+Treat the following as hypotheses rather than constraints:
+
+- the literal wording of the request
 - the suspected cause
 - the proposed solution
-- the assumed set of options
+- the assumed option set
 - the level at which the problem was described
+- the implied sequence of steps
 
-Preserve the desired outcome, evidence, real constraints, and the user's agency. Consider whether the useful question sits at the level of the goal, system, bottleneck, cause, decision, or next experiment. Moving to a more abstract level is not automatically better; change levels only when doing so could change the actual choice.
+Preserve the intended outcome, evidence, real constraints, delivery contract, and authorization boundary. Consider whether the useful working problem sits at the level of the goal, system, bottleneck, cause, decision, intervention, or implementation. Moving upward is not automatically better; change levels only when doing so could change the work or result.
 
-### 3. Generate competing questions
+For every nontrivial reframing, read [references/lenses.md](references/lenses.md). Select several relevant lenses from different families and internally generate a diverse set—usually 5–15—of genuinely competing problem formulations.
 
-For every nontrivial case, read [references/lenses.md](references/lenses.md). Select several relevant lenses from different families and internally generate a diverse set—usually 5–15—of genuinely competing candidate questions before choosing one.
+Each candidate should express a distinct theory of what actually needs to be resolved and what successful completion would accomplish. Across the set, consider relevant differences such as:
 
-Each candidate should represent a distinct hypothesis about what most limits progress or which unknown most affects the decision. Across the set, consider relevant differences such as:
-
-- whether the desired outcome or success criterion is wrong or incomplete
+- the real outcome or definition of success
 - root cause versus visible symptom
-- current bottleneck versus an eventual concern
+- current bottleneck versus a later concern
 - behavior, incentives, capability, or environment
-- value and unmet need
+- user value and unmet need
 - risk, reversibility, opportunity cost, or second-order effects
 - a crucial unknown that could reverse the decision
-- the smallest useful test or next action
+- the smallest intervention or test that can produce useful evidence
 
-Include a candidate that challenges the proposed solution when one is present. Also give the proposed solution a fair path to win if it is genuinely the highest-leverage route.
+When the user proposes a solution, include a formulation that challenges it and another that gives it a fair path to win. Reject candidates that merely paraphrase the request, assume an unsupported diagnosis, are too vague to complete, violate the delivery contract, exceed the authorized scope, or would leave the central obstacle untouched.
 
-Reject candidates that are merely paraphrases, embed an unsupported diagnosis, bundle several questions together, are too vague to answer, or would not change any decision under plausible answers.
+### 4. Select the working problem by goal leverage
 
-### 4. Rank by goal leverage
-
-Choose the candidate whose trustworthy answer would most improve the probability of reaching the user's real goal. **Goal leverage dominates all other criteria.** Evaluate each serious candidate on:
+Choose the formulation whose successful resolution would most improve the probability of achieving the user's intended outcome. **Goal leverage dominates all other criteria.** Evaluate serious candidates on:
 
 - **Causal importance:** how strongly the underlying factor affects the outcome
-- **Decision-relevant information gain:** how much plausible answers could change the choice
+- **Decision-relevant information gain:** how much plausible findings could change the action
 - **Rootness:** whether it reaches a cause or binding constraint rather than a symptom
-- **Actionability:** whether the answer changes what the user can do next
+- **Completion value:** how much solving it would advance the requested result
 - **Urgency and irreversibility:** whether delay or a wrong move creates disproportionate cost
-- **Answerability and investigation cost:** whether the information can be obtained at a justified cost
+- **Feasibility:** whether it can be resolved with justified effort, available evidence, and permitted actions
 
-Do not let an easy, concrete, or immediately actionable question beat a substantially more consequential one merely because it is easier to answer.
+Run a counterfactual tournament between the strongest formulations:
 
-Run a counterfactual tournament between the strongest candidates:
-
-1. If the user had a reliable answer to this question, which decision would change?
-2. Would meaningfully different plausible answers lead to different actions? If not, information gain is low.
-3. If the proposed solution disappeared, would this question still illuminate the goal?
-4. Does it target the current limiting factor rather than a later-stage concern?
-5. Is it upstream enough to matter but concrete enough to answer and act on?
+1. If this problem were solved, how much would the intended outcome improve?
+2. If the literal request were completed instead, would the central obstacle remain?
+3. Could plausible findings lead to meaningfully different actions?
+4. Does this target the current limiting factor rather than a later-stage concern?
+5. Is it concrete enough to resolve and within the user's scope and authorization?
 
 Apply the final test:
 
-> If the user could get a trustworthy answer to only one question before acting, which answer would most improve their chance of achieving the outcome?
+> If the agent could complete only one piece of work in this turn, which problem's resolution would most advance the result the user actually wants?
 
-Select one winner. Keep alternatives only when unresolved goal ambiguity or a genuine near-tie makes a single winner misleading.
+Select one working problem. It may be a question, diagnosis, decision, outcome, or execution target. It replaces the original framing for the rest of the workflow; it is not a prerequisite question to hand back to the user.
 
-### 5. Sharpen the winning question
+For a narrow technical request, move upward to a product, business, or system concern only when that concern changes the technical choice. Otherwise keep the working problem technical and solve it at the appropriate level.
 
-Make the question:
+### 5. Solve or execute the transformed problem
 
-- singular rather than compound
-- specific enough to investigate or answer
-- neutral about causes and solutions that are not yet established
-- connected to a real decision or change in action
-- expressed in the user's language
+Immediately continue from reframing to completion. Match the original delivery contract:
 
-Do not make it sound clever at the expense of usefulness. Preserve any constraint that materially changes the answer.
+- **Answer or explain:** answer the transformed question and support the conclusion.
+- **Recommend or decide:** analyze the decisive tradeoffs and give a recommendation or decision rule.
+- **Diagnose:** inspect the available evidence, identify the most likely cause, and validate it where possible.
+- **Plan:** produce a plan that addresses the actual constraint and leads to the intended outcome.
+- **Research:** gather and synthesize the information needed to resolve the working problem.
+- **Create or change:** make the artifact or in-scope change, then verify the result.
 
-For a narrow technical question, move upward to a product, business, or system consequence only when that consequence changes the technical choice. Otherwise keep the question technical and improve it at the same level.
+Use available tools and context when they can do the work the user requested. Do not return an investigative question that the agent can answer by inspecting the provided system, files, data, or sources.
 
-### 6. Respond simply
+If the better route requires a materially different external action or broader authority than the user granted, complete the safe in-scope reasoning and ask for authorization before that action. If progress is genuinely blocked by missing user-only information, ask the smallest question that unlocks the work, then continue after the answer.
 
-The depth belongs in the internal reasoning, not in the amount of text shown to the user. Use everyday language and translate the labels naturally when needed. Do not mention lenses, candidate counts, scoring, or framework names unless the user asks.
+Apart from a necessary blocking clarification, stop after reframing only when the user explicitly asks for the right question or problem formulation and does not want it solved.
 
-By default, return:
+### 6. Respond with the completed work
 
-**What you're really trying to achieve**
+Lead with the answer, result, recommendation, diagnosis, plan, or completed change—not with a description of the reframing process. There is no required three-heading template.
 
-[One short sentence. Mark uncertainty when inferred.]
+When the transformation is substantial and knowing it helps the user evaluate the result, briefly state the working problem or changed assumption, then immediately continue with the solution. Otherwise keep the reframing internal.
 
-**The question to answer first**
-
-[One question.]
-
-**Why start here**
-
-[Briefly explain which decision, assumption, cause, or bottleneck its answer would clarify and why that matters more than the original question.]
-
-Follow an explicit request for a shorter format. Include at most two alternatives, and only when they represent genuinely different, high-leverage paths. Never show the full internal candidate set by default.
+Use the user's language and follow their requested format. Do not expose the candidate set, scores, model inventory, or chain of reasoning unless explicitly asked for an appropriate summary.
 
 ## Guardrails
 
-- Never reduce internal reasoning depth merely to make the experience or final wording simpler.
-- Do not merely polish, broaden, or make the original question sound smarter.
-- Do not preserve a proposed solution just because the user mentioned it first.
-- Do not discard explicit goals or real constraints.
-- Do not assume that a more strategic, philosophical, or abstract question has more leverage.
+- Reframing is a means to better work, not a substitute for doing the work.
+- Do not default to “the question to answer first” or force a dependency between the original and transformed problems.
+- Do not hand the transformed problem back as homework when the agent can solve it.
+- Do not merely polish, broaden, or make the original wording sound smarter.
+- Do not preserve a proposed solution merely because the user mentioned it first.
+- Do not discard explicit goals, constraints, deliverables, or authorization boundaries.
+- Do not assume that a more strategic, philosophical, or abstract formulation has more leverage.
 - Do not manufacture a hidden problem when the original request is already well framed.
-- Do not turn the response into a lecture or a display of reasoning frameworks.
-- Return the question rather than solving the entire underlying problem unless the user also asks to continue.
+- Do not turn the response into a lecture or display of frameworks.
 
-When calibration is useful or the distinction between paraphrasing and reframing is unclear, read [references/examples.md](references/examples.md).
+When calibration is useful or the difference between useful transformation and unhelpful redirection is unclear, read [references/examples.md](references/examples.md).
 
 ## Success criterion
 
 The user should feel:
 
-> I came looking for an answer, but this is the question I actually needed.
+> The agent did not merely answer my wording or give me another question—it solved the problem I actually needed handled.

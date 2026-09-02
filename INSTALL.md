@@ -18,11 +18,11 @@ Paste this into a Codex chat:
 $skill-installer Install right-question from https://github.com/lilwind7/RightQuestion
 ```
 
-If it does not appear immediately, restart Codex. Then use `$right-question` or ask naturally.
+If it does not appear immediately, restart Codex. Then use `$right-question` or describe a task naturally; the agent will reframe when useful and continue with the work.
 
 ## Claude Code and Cursor
 
-Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-question` or ask naturally.
+Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-question` or describe a task naturally; the agent will reframe when useful and continue with the work.
 
 ## Gemini CLI
 

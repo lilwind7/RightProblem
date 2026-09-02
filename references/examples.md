@@ -1,57 +1,59 @@
 # Calibration examples
 
-These examples show how RightQuestion moves from the first question to the question that matters more. Adapt the reasoning, not the wording.
-
-## A career decision
-
-**Input:** “Should I quit my job?”
-
-**Likely goal:** Build a working life that is healthier, more meaningful, or more sustainable.
-
-**Weak paraphrase:** “Would quitting my job make me happier?”
-
-**Better question:** “Which important change you want from your working life can only be achieved by leaving this job?”
-
-The better question reveals both the real need and whether resignation is actually the right route.
+These examples distinguish reframing as an internal step from reframing as the deliverable. Unless a necessary clarification blocks progress or the user explicitly asks only for a reformulation, continue and solve the transformed problem.
 
 ## Buying another course
 
-**Input:** “Should I buy this course?”
+**Input:** “Should I buy this course? I have already finished three similar courses, but I still cannot complete a portfolio project.”
 
-**Likely goal:** Make real progress in learning a skill or changing direction.
+**Weak behavior:** Ask “What is really stopping you from progressing?” and stop.
 
-**Weak paraphrase:** “Is this course worth the money?”
+**Working problem:** Identify and remove the constraint preventing the user from turning existing knowledge into completed work.
 
-**Better question:** “What is the main obstacle currently preventing you from making progress?”
+**Correct completion:** Recommend against another general course for now. Give the user a small project to attempt, a way to record the first concrete blocker, and a rule for buying only targeted instruction if that blocker proves to be missing knowledge. The response resolves the purchase decision and advances the real goal.
 
-The answer may point to a course, but it may instead reveal a need for practice, feedback, time, confidence, or a clearer goal.
+## A narrow technical solution
 
-## Working hard without progress
+**Input:** “Our website is slow. Should we add caching?”
 
-**Input:** “How can I work harder and finally get ahead?”
+**Weak behavior:** Return “What is the current performance bottleneck?” as homework.
 
-**Likely goal:** See meaningful progress from the time and energy being invested.
+**Working problem:** Locate the measured source of user-visible latency and apply the lowest-risk fix that removes it.
 
-**Weak paraphrase:** “How can I become more productive?”
+**Correct completion:** When the system, repository, or performance evidence is available, inspect it, determine whether caching addresses the binding constraint, implement the appropriate in-scope fix, and verify the effect. Ask for a trace or measurement only if the necessary evidence is unavailable and cannot be obtained directly. Do not leap to a business-level question unless it changes the technical choice.
 
-**Better question:** “Which part of your current effort contributes least to the result you actually care about?”
+## Repeated effort without progress
 
-The better question tests whether more effort is needed at all.
+**Input:** “How can I work harder? I already work ten-hour days, but my important project keeps slipping because my calendar is full of meetings.”
+
+**Weak behavior:** Return “Which work contributes least?” without helping further.
+
+**Working problem:** Protect enough focused capacity for the important project by removing the current scheduling constraint.
+
+**Correct completion:** Produce a concrete calendar triage and focus plan, including which meetings to eliminate, shorten, delegate, or batch and how to reserve project time. More effort is not the solution; reallocating constrained attention is.
 
 ## Choosing between options
 
-**Input:** “Which of these three job offers should I take?”
+**Input:** “Offer A pays more but requires sixty-hour weeks. Offer B is remote and pays less. I want more time with my family. Which should I choose?”
 
-**Likely goal:** Choose the next role without regretting the tradeoffs later.
+**Working problem:** Choose the offer that best satisfies the user's stated priority while making the material tradeoff explicit.
 
-**Weak paraphrase:** “Which offer is best overall?”
+**Correct completion:** Recommend Offer B on the stated evidence, quantify or explain the compensation tradeoff, and name the condition that would reverse the recommendation. Do not merely ask which difference will matter later; the user has already supplied the deciding value.
 
-**Better question:** “Which difference between these roles will still matter to your life two years from now, after salary and first impressions stop feeling new?”
+## High-cost ambiguity
 
-The better question identifies the lasting tradeoff instead of pretending one option is best in every way.
+**Input:** “Should I quit my job?”
+
+Income, health, values, another opportunity, and escape from a temporary conflict could produce materially different work, while resignation may be costly to reverse. Ask one concise question about the change the user needs from work, then use the answer to complete the analysis and recommendation. Here clarification is a temporary necessity, not the final product.
+
+## Explicit reformulation-only request
+
+**Input:** “Do not solve this yet. Just help me identify the real problem.”
+
+Return the transformed problem and a concise rationale. Stopping after reframing is correct because the user explicitly requested that delivery contract.
 
 ## A factual request
 
 **Input:** “What is the capital of Belgium?”
 
-Answer the factual question directly. There is no useful hidden decision to uncover.
+Answer “Brussels” directly. There is no useful hidden problem to manufacture.
