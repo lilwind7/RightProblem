@@ -3,14 +3,14 @@ name: right-question
 description: Reframe a potentially misframed request into the real problem that best serves the user's intended outcome, then continue to answer, decide, diagnose, plan, create, or execute until that problem is handled. Use when wording, a proposed solution, an assumed cause, or a limited option set may point the agent at the wrong work, including stuck decisions and repeated effort without progress. Skip simple factual requests and well-framed execution tasks.
 license: MIT
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
 # RightQuestion
 
 Turn the user's request into the right working problem, then solve it.
 
-Reframing is an internal routing step, not the default deliverable. The transformed problem replaces the original framing as the agent's working target; it is not merely another question the user must answer before the agent starts working. Keep the experience simple without simplifying the reasoning, and continue until the intended task is handled as fully as the available context, capabilities, and authorization allow.
+Use reframing as an internal routing step: select the working problem that best serves the intended outcome, then answer or execute it. Keep the experience simple without simplifying the reasoning, and continue until the task is handled as fully as the available context, capabilities, and authorization allow.
 
 ## When to use
 
@@ -23,7 +23,7 @@ Use this skill when a different problem formulation could materially change the 
 - repeated effort without meaningful progress
 - a decision dominated by an untested assumption, risk, incentive, or bottleneck
 
-Do not force reframing onto a straightforward fact request or a well-framed execution task. When the original framing is already useful, carry it out normally. Explicit invocation of this skill still permits the conclusion that no reframing is needed.
+Apply the full reframing method only when it could materially improve the work. Carry out straightforward fact requests and well-framed execution tasks normally. When the skill is explicitly invoked, first assess whether the original framing is already the right one.
 
 ## Method
 
@@ -44,17 +44,17 @@ Ask internally:
 
 > If the literal request were completed perfectly, what real-world result would the user hope becomes better afterward?
 
-Distinguish the intended outcome from a proxy, tactic, metric, convention, or borrowed expectation. Do not replace a goal the user clearly chose.
+Distinguish the intended outcome from a proxy, tactic, metric, convention, or borrowed expectation. Respect any goal the user clearly chose.
 
-Preserve the user's delivery contract. A request to implement something should still result in implementation; a request for a recommendation should still result in a recommendation. Reframing may change what work best satisfies the request, but it must not silently downgrade execution into advice or turn the task into homework for the user.
+Preserve the user's delivery contract. A request to implement something results in implementation; a request for a recommendation results in a recommendation. Reframing may change the route, while the agent remains responsible for completing the requested type of work.
 
-Reframing also does not expand authorization. Preserve the original scope, side-effect boundaries, explicit constraints, and required approvals.
+Keep the transformed work within the original scope, side-effect boundaries, explicit constraints, and required approvals.
 
 ### 2. Clarify only when necessary
 
 Treat inferred goals as uncertain. Ask one concise clarifying question only when plausible goals would lead to materially different work and choosing incorrectly would be costly, difficult to reverse, or likely to invalidate the result.
 
-When clarification is truly required, return only the blocking question in the current turn and resume the full workflow after the user answers. For noncritical gaps, state a reasonable assumption and continue. Do not ask the user to answer an internal diagnostic question when the agent can investigate or reason through it itself.
+When clarification is truly required, return the single blocking question in the current turn and resume the full workflow after the user answers. For noncritical gaps, state a reasonable assumption and continue. Investigate directly whenever the necessary information is available through the provided context, system, files, data, sources, or tools.
 
 ### 3. Reopen the problem space
 
@@ -107,7 +107,7 @@ Apply the final test:
 
 > If the agent could complete only one piece of work in this turn, which problem's resolution would most advance the result the user actually wants?
 
-Select one working problem. It may be a question, diagnosis, decision, outcome, or execution target. It replaces the original framing for the rest of the workflow; it is not a prerequisite question to hand back to the user.
+Select one working problem. It may be a question, diagnosis, decision, outcome, or execution target, and it becomes the target for the rest of the workflow.
 
 For a narrow technical request, move upward to a product, business, or system concern only when that concern changes the technical choice. Otherwise keep the working problem technical and solve it at the appropriate level.
 
@@ -122,31 +122,29 @@ Immediately continue from reframing to completion. Match the original delivery c
 - **Research:** gather and synthesize the information needed to resolve the working problem.
 - **Create or change:** make the artifact or in-scope change, then verify the result.
 
-Use available tools and context when they can do the work the user requested. Do not return an investigative question that the agent can answer by inspecting the provided system, files, data, or sources.
+Use available tools and context to inspect the provided system, files, data, or sources and complete the requested work directly.
 
 If the better route requires a materially different external action or broader authority than the user granted, complete the safe in-scope reasoning and ask for authorization before that action. If progress is genuinely blocked by missing user-only information, ask the smallest question that unlocks the work, then continue after the answer.
 
-Apart from a necessary blocking clarification, stop after reframing only when the user explicitly asks for the right question or problem formulation and does not want it solved.
+If the user explicitly requests only the right question or problem formulation, deliver that formulation and its concise rationale. In every other case, proceed to resolution after any necessary blocking clarification.
 
 ### 6. Respond with the completed work
 
-Lead with the answer, result, recommendation, diagnosis, plan, or completed change—not with a description of the reframing process. There is no required three-heading template.
+Lead with the answer, result, recommendation, diagnosis, plan, or completed change. Let the task and the user's requested format determine the response structure.
 
 When the transformation is substantial and knowing it helps the user evaluate the result, briefly state the working problem or changed assumption, then immediately continue with the solution. Otherwise keep the reframing internal.
 
-Use the user's language and follow their requested format. Do not expose the candidate set, scores, model inventory, or chain of reasoning unless explicitly asked for an appropriate summary.
+Use the user's language and follow their requested format. Keep the candidate set, scores, model inventory, and chain of reasoning internal unless the user explicitly asks for an appropriate summary.
 
 ## Guardrails
 
-- Reframing is a means to better work, not a substitute for doing the work.
-- Do not default to “the question to answer first” or force a dependency between the original and transformed problems.
-- Do not hand the transformed problem back as homework when the agent can solve it.
-- Do not merely polish, broaden, or make the original wording sound smarter.
-- Do not preserve a proposed solution merely because the user mentioned it first.
-- Do not discard explicit goals, constraints, deliverables, or authorization boundaries.
-- Do not assume that a more strategic, philosophical, or abstract formulation has more leverage.
-- Do not manufacture a hidden problem when the original request is already well framed.
-- Do not turn the response into a lecture or display of frameworks.
+- Complete the selected working problem within the same workflow.
+- Preserve the user's requested delivery type and take responsibility for the work the agent can perform.
+- Treat proposed solutions, assumed causes, option sets, and problem levels as hypotheses.
+- Preserve explicit goals, constraints, deliverables, and authorization boundaries.
+- Change the abstraction level only when doing so improves the actual choice or result.
+- Prefer the original framing whenever it already targets the highest-leverage work.
+- Keep frameworks and internal candidate comparisons out of the default response.
 
 When calibration is useful or the difference between useful transformation and unhelpful redirection is unclear, read [references/examples.md](references/examples.md).
 
@@ -154,4 +152,4 @@ When calibration is useful or the difference between useful transformation and u
 
 The user should feel:
 
-> The agent did not merely answer my wording or give me another question—it solved the problem I actually needed handled.
+> The agent understood what I was really trying to accomplish and handled the work that mattered.

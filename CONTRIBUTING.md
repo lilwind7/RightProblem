@@ -5,7 +5,7 @@ RightQuestion should remain small, portable, and behaviorally sharp. Contributio
 ## Good contributions
 
 - A realistic input where the skill follows the wording but solves the wrong problem
-- A case where the skill reframes correctly but stops instead of completing the requested work
+- A case that improves the transition from reframing to completed work
 - A false-positive trigger where a factual or well-framed execution request should stay untouched
 - A clearer distinction between evidence, constraints, assumptions, proposed solutions, and authorized actions
 - A compatibility fix backed by current host documentation
@@ -32,7 +32,7 @@ The second command is available in Codex's bundled `skill-creator`; its exact in
 - Does the skill preserve explicit goals, constraints, delivery type, and authorization boundaries?
 - Can the transformed working problem differ materially from the input?
 - Does resolving it advance the user's intended outcome more than literal completion would?
-- Does the agent continue to answer, decide, diagnose, plan, create, or execute after reframing?
+- Does the agent complete the requested answer, decision, diagnosis, plan, creation, or execution after reframing?
 - Does it ask the user only for information the agent cannot obtain or safely infer?
 - Does a straightforward fact or well-framed task remain straightforward?
 - Are internal candidates and frameworks hidden from the default output?

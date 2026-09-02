@@ -2,7 +2,7 @@
 
 Use this reference for every nontrivial reframing. Its purpose is to prevent premature convergence on the first plausible interpretation of what work should be done.
 
-Select 3–6 lenses that create competing hypotheses, normally from at least three different families. Use each useful lens to generate one or more candidate problem formulations, not questions to hand back to the user. Lens count and candidate count are different: if the selected lenses produce fewer than five genuinely competing formulations, develop additional hypotheses before ranking. Do not mechanically apply every model or prefer a lens merely because it sounds sophisticated.
+Select 3–6 lenses that create competing hypotheses, normally from at least three different families. Use each useful lens to generate one or more candidate problem formulations that define the work the agent could perform. Lens count and candidate count are different: if the selected lenses produce fewer than five genuinely competing formulations, develop additional hypotheses before ranking. Apply the models selectively according to their relevance and decision value.
 
 A useful internal formulation identifies both:
 
@@ -62,4 +62,4 @@ Start with lenses that could disagree with one another. A strong default is:
 
 If all formulations support the user's initial theory, deliberately choose a lens that could falsify it. If every formulation is abstract, add a lens that locates a present constraint or executable intervention. If every formulation is tactical, add a lens that tests the intended outcome or causal model.
 
-Stop adding lenses when new formulations no longer reveal a different decision-relevant target. Use the winning formulation to guide the actual work; the final output should be the solution or completed task, not the framework or internal probe.
+Stop adding lenses when new formulations no longer reveal a different decision-relevant target. Use the winning formulation to guide the work, express the final output as the solution or completed task, and keep the framework and internal probes internal.
