@@ -38,18 +38,34 @@ class InstallerTests(unittest.TestCase):
             expected = (
                 ".agents/skills/right-question",
                 ".claude/skills/right-question",
-                ".cursor/skills/right-question",
-                ".gemini/skills/right-question",
             )
             for relative in expected:
                 installed = project / relative
                 self.assertTrue((installed / "SKILL.md").is_file())
                 self.assertTrue((installed / "references" / "examples.md").is_file())
                 self.assertFalse((installed / "scripts" / "install.py").exists())
+            self.assertFalse((project / ".cursor/skills/right-question").exists())
+            self.assertFalse((project / ".gemini/skills/right-question").exists())
 
             second = self.run_installer(project)
             self.assertEqual(second.returncode, 0, second.stderr)
             self.assertIn("already installed", second.stdout)
+
+    def test_all_retires_redundant_host_specific_copies(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            project = Path(temporary)
+            cursor = self.run_installer(project, "--agent", "cursor")
+            gemini = self.run_installer(project, "--agent", "gemini")
+            self.assertEqual(cursor.returncode, 0, cursor.stderr)
+            self.assertEqual(gemini.returncode, 0, gemini.stderr)
+
+            combined = self.run_installer(project)
+            self.assertEqual(combined.returncode, 0, combined.stderr)
+            self.assertTrue((project / ".agents/skills/right-question/SKILL.md").is_file())
+            self.assertTrue((project / ".claude/skills/right-question/SKILL.md").is_file())
+            self.assertFalse((project / ".cursor/skills/right-question").exists())
+            self.assertFalse((project / ".gemini/skills/right-question").exists())
+            self.assertEqual(combined.stdout.count("removed redundant copy"), 2)
 
     def test_different_install_requires_force_and_force_keeps_backup(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

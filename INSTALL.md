@@ -18,11 +18,11 @@ Paste this into a Codex chat:
 $skill-installer Install right-question from https://github.com/lilwind7/RightQuestion
 ```
 
-If it does not appear immediately, restart Codex. Then use `$right-question` or describe a task naturally; the agent will reframe when useful and continue with the work.
+If it does not appear immediately, restart Codex. Then use `$right-question` or describe a task naturally; the assistant will determine what matters most now and make useful progress.
 
 ## Claude Code and Cursor
 
-Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-question` or describe a task naturally; the agent will reframe when useful and continue with the work.
+Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-question` or describe a task naturally; the assistant will apply the method when it can materially improve the work.
 
 ## Gemini CLI
 
@@ -48,7 +48,7 @@ On Windows:
 py scripts/install.py
 ```
 
-The default installs user-level copies for Codex, Claude Code, Cursor, and Gemini CLI. Existing installations are never overwritten silently.
+The default installs one portable user-level copy shared by Codex, Cursor, and Gemini CLI, plus a Claude Code copy. This avoids duplicate-skill warnings while covering all four hosts. Existing installations are never overwritten silently.
 
 Useful options:
 

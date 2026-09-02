@@ -12,7 +12,7 @@ import tempfile
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Sequence
 
 
 SKILL_NAME = "right-question"
@@ -95,22 +95,50 @@ def expanded_agents(requested: Sequence[str] | None) -> list[str]:
     return expanded
 
 
-def destinations(args: argparse.Namespace) -> list[Destination]:
+def install_agents(requested: Sequence[str] | None) -> list[str]:
+    agents = expanded_agents(requested)
+    if "universal" in agents or "codex" in agents:
+        # The portable .agents path is also discovered by Cursor and Gemini.
+        # Avoid duplicate copies that those hosts would load as conflicts.
+        agents = [agent for agent in agents if agent not in ("cursor", "gemini")]
+    return agents
+
+
+def destination_base(args: argparse.Namespace) -> Path:
     if args.scope == "project":
         base = args.project_dir.expanduser().resolve()
         if not base.is_dir():
             raise InstallError(f"Project directory does not exist: {base}")
-    else:
-        base = Path.home()
+        return base
+    return Path.home()
+
+
+def destinations(args: argparse.Namespace) -> list[Destination]:
+    base = destination_base(args)
+    agents = expanded_agents(args.agent) if args.uninstall else install_agents(args.agent)
 
     result: list[Destination] = []
     seen_paths: set[Path] = set()
-    for agent in expanded_agents(args.agent):
+    for agent in agents:
         target = base / AGENT_DIRS[agent] / SKILL_NAME
         if target not in seen_paths:
             result.append(Destination(agent=agent, path=target))
             seen_paths.add(target)
     return result
+
+
+def redundant_destinations(args: argparse.Namespace) -> list[Destination]:
+    if args.uninstall:
+        return []
+    requested = expanded_agents(args.agent)
+    if "universal" not in requested and "codex" not in requested:
+        return []
+    base = destination_base(args)
+    return [
+        Destination(agent=agent, path=base / AGENT_DIRS[agent] / SKILL_NAME)
+        for agent in ("cursor", "gemini")
+        if agent in requested
+    ]
 
 
 def path_exists(path: Path) -> bool:
@@ -173,8 +201,47 @@ def remove_path(path: Path) -> None:
 
 
 def backup_root(args: argparse.Namespace) -> Path:
-    base = args.project_dir.expanduser().resolve() if args.scope == "project" else Path.home()
-    return base / ".right-question-backups"
+    return destination_base(args) / ".right-question-backups"
+
+
+def validate_redundant_destinations(
+    destinations_to_retire: Sequence[Destination],
+    args: argparse.Namespace,
+) -> None:
+    if args.force:
+        return
+    different = [
+        destination.path
+        for destination in destinations_to_retire
+        if path_exists(destination.path) and not payload_matches(destination.path)
+    ]
+    if different:
+        joined = ", ".join(str(path) for path in different)
+        raise InstallError(
+            "Redundant host-specific installations would conflict with the portable .agents copy: "
+            f"{joined}. Re-run with --force to keep backups and remove the duplicates."
+        )
+
+
+def retire_redundant_destination(
+    destination: Destination,
+    args: argparse.Namespace,
+    backup_stamp: str,
+) -> str | None:
+    target = destination.path
+    if not path_exists(target):
+        return None
+    if args.dry_run:
+        action = "remove" if payload_matches(target) else "back up and remove"
+        return f"would {action} redundant copy: {target}"
+    if payload_matches(target):
+        remove_path(target)
+        return f"removed redundant copy: {target}"
+
+    saved = backup_root(args) / backup_stamp / f"{destination.agent}-redundant" / SKILL_NAME
+    saved.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(target), str(saved))
+    return f"backed up redundant copy: {target} -> {saved}"
 
 
 def install_one(
@@ -244,6 +311,8 @@ def run(argv: Sequence[str] | None = None) -> int:
     try:
         validate_source()
         targets = destinations(args)
+        redundant = redundant_destinations(args)
+        validate_redundant_destinations(redundant, args)
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         for destination in targets:
             message = (
@@ -252,6 +321,10 @@ def run(argv: Sequence[str] | None = None) -> int:
                 else install_one(destination, args, stamp)
             )
             print(message)
+        for destination in redundant:
+            message = retire_redundant_destination(destination, args, stamp)
+            if message is not None:
+                print(message)
         if not args.dry_run:
             print("Done. Reload skills or restart any agent that was already running.")
         return 0

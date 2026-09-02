@@ -1,6 +1,6 @@
 interface:
   display_name: "RightQuestion"
-  short_description: "Reframe the request, then solve what really matters"
-  default_prompt: "Use $right-question to identify the problem I actually need handled, then solve it or complete the work."
+  short_description: "Find what matters most now and move it forward"
+  default_prompt: "Use $right-question to determine what matters most in my current situation and help me make the most useful progress now."
 policy:
   allow_implicit_invocation: true
