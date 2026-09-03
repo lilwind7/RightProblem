@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install RightQuestion for one or more Agent Skills hosts."""
+"""Install RightProblem for one or more Agent Skills hosts."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Sequence
 
 
-SKILL_NAME = "right-question"
+SKILL_NAME = "right-problem"
 SOURCE_ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_ENTRIES = ("SKILL.md", "agents", "references", "LICENSE")
 AGENT_DIRS = {
@@ -40,7 +40,7 @@ class Destination:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Install the RightQuestion skill for Codex, Claude Code, Cursor, Gemini CLI, or the portable .agents path."
+        description="Install the RightProblem skill for Codex, Claude Code, Cursor, Gemini CLI, or the portable .agents path."
     )
     parser.add_argument(
         "--agent",
@@ -201,7 +201,7 @@ def remove_path(path: Path) -> None:
 
 
 def backup_root(args: argparse.Namespace) -> Path:
-    return destination_base(args) / ".right-question-backups"
+    return destination_base(args) / ".right-problem-backups"
 
 
 def validate_redundant_destinations(

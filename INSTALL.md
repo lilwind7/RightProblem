@@ -5,31 +5,31 @@
 Paste this into an AI assistant that can manage Agent Skills and local files:
 
 ```text
-Install the right-question Agent Skill from https://github.com/lilwind7/RightQuestion for my user account. Verify that it is available, then tell me the simplest way to use it. Do not ask me to run terminal commands unless you cannot complete the installation yourself.
+Install the right-problem Agent Skill from https://github.com/lilwind7/RightProblem for my user account. Verify that it is available, then tell me the simplest way to use it. Do not ask me to run terminal commands unless you cannot complete the installation yourself.
 ```
 
-Review any permission request before approving it. RightQuestion itself contains instructions and examples only; it does not run tools or access external services.
+Review any permission request before approving it. RightProblem itself contains instructions and examples only; it does not run tools or access external services.
 
 ## Codex
 
 Paste this into a Codex chat:
 
 ```text
-$skill-installer Install right-question from https://github.com/lilwind7/RightQuestion
+$skill-installer Install right-problem from https://github.com/lilwind7/RightProblem
 ```
 
-If it does not appear immediately, restart Codex. Then use `$right-question` or describe a task naturally; the assistant will determine what matters most now and make useful progress.
+If it does not appear immediately, restart Codex. Then use `$right-problem` or describe a task naturally; the assistant will determine what matters most now and make useful progress.
 
 ## Claude Code and Cursor
 
-Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-question` or describe a task naturally; the assistant will apply the method when it can materially improve the work.
+Paste the general installation request above into the agent. Both products support `SKILL.md` skills and can place the folder in the correct user-level location. After installation, use `/right-problem` or describe a task naturally; the assistant will apply the method when it can materially improve the work.
 
 ## Gemini CLI
 
 Gemini CLI can install directly from GitHub:
 
 ```text
-gemini skills install https://github.com/lilwind7/RightQuestion
+gemini skills install https://github.com/lilwind7/RightProblem
 ```
 
 Then start a new session or run `/skills reload`.
@@ -68,10 +68,10 @@ python3 scripts/install.py --uninstall
 
 | Host | User-level | Project-level | Official documentation |
 | --- | --- | --- | --- |
-| Codex | `~/.agents/skills/right-question` | `.agents/skills/right-question` | [Build skills](https://developers.openai.com/codex/skills/) |
-| Claude Code | `~/.claude/skills/right-question` | `.claude/skills/right-question` | [Extend Claude with skills](https://code.claude.com/docs/en/skills) |
-| Cursor | `~/.cursor/skills/right-question` | `.cursor/skills/right-question` | [Agent Skills](https://cursor.com/docs/skills) |
-| Gemini CLI | `~/.gemini/skills/right-question` | `.gemini/skills/right-question` | [Managing Agent Skills](https://geminicli.com/docs/cli/using-agent-skills/) |
-| Portable alias | `~/.agents/skills/right-question` | `.agents/skills/right-question` | Supported by Codex, Cursor, and Gemini CLI |
+| Codex | `~/.agents/skills/right-problem` | `.agents/skills/right-problem` | [Build skills](https://developers.openai.com/codex/skills/) |
+| Claude Code | `~/.claude/skills/right-problem` | `.claude/skills/right-problem` | [Extend Claude with skills](https://code.claude.com/docs/en/skills) |
+| Cursor | `~/.cursor/skills/right-problem` | `.cursor/skills/right-problem` | [Agent Skills](https://cursor.com/docs/skills) |
+| Gemini CLI | `~/.gemini/skills/right-problem` | `.gemini/skills/right-problem` | [Managing Agent Skills](https://geminicli.com/docs/cli/using-agent-skills/) |
+| Portable alias | `~/.agents/skills/right-problem` | `.agents/skills/right-problem` | Supported by Codex, Cursor, and Gemini CLI |
 
 If a running host does not discover the new skill, reload its skills or restart it.

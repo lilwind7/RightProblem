@@ -1,6 +1,6 @@
 interface:
-  display_name: "RightQuestion"
+  display_name: "RightProblem"
   short_description: "Find what matters most now and move it forward"
-  default_prompt: "Use $right-question to determine what matters most in my current situation and help me make the most useful progress now."
+  default_prompt: "Use $right-problem to determine what matters most in my current situation and help me make the most useful progress now."
 policy:
   allow_implicit_invocation: true

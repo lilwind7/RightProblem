@@ -36,16 +36,18 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual(first.returncode, 0, first.stderr)
 
             expected = (
-                ".agents/skills/right-question",
-                ".claude/skills/right-question",
+                ".agents/skills/right-problem",
+                ".claude/skills/right-problem",
             )
             for relative in expected:
                 installed = project / relative
                 self.assertTrue((installed / "SKILL.md").is_file())
+                metadata = (installed / "SKILL.md").read_text(encoding="utf-8")
+                self.assertIn("name: right-problem", metadata)
                 self.assertTrue((installed / "references" / "examples.md").is_file())
                 self.assertFalse((installed / "scripts" / "install.py").exists())
-            self.assertFalse((project / ".cursor/skills/right-question").exists())
-            self.assertFalse((project / ".gemini/skills/right-question").exists())
+            self.assertFalse((project / ".cursor/skills/right-problem").exists())
+            self.assertFalse((project / ".gemini/skills/right-problem").exists())
 
             second = self.run_installer(project)
             self.assertEqual(second.returncode, 0, second.stderr)
@@ -61,16 +63,16 @@ class InstallerTests(unittest.TestCase):
 
             combined = self.run_installer(project)
             self.assertEqual(combined.returncode, 0, combined.stderr)
-            self.assertTrue((project / ".agents/skills/right-question/SKILL.md").is_file())
-            self.assertTrue((project / ".claude/skills/right-question/SKILL.md").is_file())
-            self.assertFalse((project / ".cursor/skills/right-question").exists())
-            self.assertFalse((project / ".gemini/skills/right-question").exists())
+            self.assertTrue((project / ".agents/skills/right-problem/SKILL.md").is_file())
+            self.assertTrue((project / ".claude/skills/right-problem/SKILL.md").is_file())
+            self.assertFalse((project / ".cursor/skills/right-problem").exists())
+            self.assertFalse((project / ".gemini/skills/right-problem").exists())
             self.assertEqual(combined.stdout.count("removed redundant copy"), 2)
 
     def test_different_install_requires_force_and_force_keeps_backup(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             project = Path(temporary)
-            target = project / ".claude/skills/right-question"
+            target = project / ".claude/skills/right-problem"
             first = self.run_installer(project, "--agent", "claude")
             self.assertEqual(first.returncode, 0, first.stderr)
 
@@ -83,7 +85,7 @@ class InstallerTests(unittest.TestCase):
             forced = self.run_installer(project, "--agent", "claude", "--force")
             self.assertEqual(forced.returncode, 0, forced.stderr)
             self.assertTrue((target / "SKILL.md").read_text(encoding="utf-8").startswith("---\n"))
-            backups = list((project / ".right-question-backups").rglob("SKILL.md"))
+            backups = list((project / ".right-problem-backups").rglob("SKILL.md"))
             self.assertEqual(len(backups), 1)
             self.assertEqual(backups[0].read_text(encoding="utf-8"), marker)
 
@@ -99,7 +101,7 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual(installed.returncode, 0, installed.stderr)
             removed = self.run_installer(project, "--agent", "cursor", "--uninstall")
             self.assertEqual(removed.returncode, 0, removed.stderr)
-            self.assertFalse((project / ".cursor/skills/right-question").exists())
+            self.assertFalse((project / ".cursor/skills/right-problem").exists())
 
     @unittest.skipIf(os.name == "nt", "Directory symlink permissions vary on Windows")
     def test_link_install_and_uninstall_never_remove_source(self) -> None:
@@ -107,7 +109,7 @@ class InstallerTests(unittest.TestCase):
             project = Path(temporary)
             installed = self.run_installer(project, "--agent", "gemini", "--method", "link")
             self.assertEqual(installed.returncode, 0, installed.stderr)
-            target = project / ".gemini/skills/right-question"
+            target = project / ".gemini/skills/right-problem"
             self.assertTrue(target.is_symlink())
             self.assertEqual(target.resolve(), REPO_ROOT)
 

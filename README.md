@@ -1,10 +1,10 @@
-<h1 align="center">RightQuestion</h1>
+<h1 align="center">RightProblem</h1>
 
-<p align="center"><strong>See what matters most now. Move it forward.</strong></p>
+<p align="center"><strong>Find the right problem. Make the next useful move.</strong></p>
 
 <p align="center"><a href="README.zh-CN.md">简体中文</a></p>
 
-RightQuestion helps an AI assistant look past the first wording of a request, work out what matters most in the current situation, and make useful progress. Depending on the task, that may mean giving an answer, making a recommendation, finding a cause, creating a plan, changing a file, or taking an authorized action.
+RightProblem helps an AI assistant look past the first wording of a request, work out what matters most in the current situation, and make useful progress. Depending on the task, that may mean giving an answer, making a recommendation, finding a cause, creating a plan, changing a file, or taking an authorized action.
 
 You do not need to understand prompts, agents, or programming.
 
@@ -12,7 +12,7 @@ You do not need to understand prompts, agents, or programming.
 
 > **You ask:** I have already taken three courses but still cannot finish a portfolio project. Should I buy another course?
 
-RightQuestion checks what is actually blocking progress now. The assistant may recommend a small project that exposes the first concrete blocker, then use that evidence to decide whether any additional course is worthwhile.
+RightProblem checks what is actually blocking progress now. The assistant may recommend a small project that exposes the first concrete blocker, then use that evidence to decide whether any additional course is worthwhile.
 
 The deeper comparison happens internally. You receive the decision and a practical next step.
 
@@ -30,16 +30,16 @@ For a task with a verifiable finish, the assistant completes it and checks the r
 If your AI assistant supports Agent Skills, send it this message and let it handle the installation:
 
 ```text
-Install the right-question Agent Skill from https://github.com/lilwind7/RightQuestion for my user account. Verify that it is available, then tell me the simplest way to use it. Do not ask me to run terminal commands unless you cannot complete the installation yourself.
+Install the right-problem Agent Skill from https://github.com/lilwind7/RightProblem for my user account. Verify that it is available, then tell me the simplest way to use it. Do not ask me to run terminal commands unless you cannot complete the installation yourself.
 ```
 
 For Codex, paste this directly into the chat:
 
 ```text
-$skill-installer Install right-question from https://github.com/lilwind7/RightQuestion
+$skill-installer Install right-problem from https://github.com/lilwind7/RightProblem
 ```
 
-After installation, describe your question or task naturally, or start with `$right-question` in Codex and `/right-question` in Claude Code or Cursor. The assistant will apply the method when it can materially improve the work.
+After installation, describe your question or task naturally, or start with `$right-problem` in Codex and `/right-problem` in Claude Code or Cursor. The assistant will apply the method when it can materially improve the work.
 
 Need host-specific or manual instructions? See the [installation guide](INSTALL.md).
 
@@ -52,7 +52,7 @@ Need host-specific or manual instructions? See the [installation guide](INSTALL.
 - “Should we use the solution I already have in mind?”
 - “What should I focus on first if I want this business to succeed?”
 
-RightQuestion can help with work, study, money and time choices, habits, relationships, creative projects, business decisions, and technical problems. It is most useful when answering the words literally could send the work in the wrong direction.
+RightProblem can help with work, study, money and time choices, habits, relationships, creative projects, business decisions, and technical problems. It is most useful when answering the words literally could send the work in the wrong direction.
 
 ## What you get
 
@@ -62,10 +62,10 @@ The response follows your task and requested format. It leads with the result an
 
 ## What is an Agent Skill?
 
-An Agent Skill is a reusable way of working that an AI assistant can load when useful. RightQuestion follows the open [Agent Skills](https://agentskills.io/) format and works with Codex, Claude Code, Cursor, and Gemini CLI. RightQuestion itself contains portable instructions; tools used for a task remain subject to the assistant's normal permissions.
+An Agent Skill is a reusable way of working that an AI assistant can load when useful. RightProblem follows the open [Agent Skills](https://agentskills.io/) format and works with Codex, Claude Code, Cursor, and Gemini CLI. RightProblem itself contains portable instructions; tools used for a task remain subject to the assistant's normal permissions.
 
 ## Contributing
 
 Everyday examples, clearer language, behavioral evaluations, translations, and compatibility fixes are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-RightQuestion is available under the [MIT License](LICENSE).
+RightProblem is available under the [MIT License](LICENSE).

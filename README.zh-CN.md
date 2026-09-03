@@ -1,10 +1,10 @@
-<h1 align="center">RightQuestion</h1>
+<h1 align="center">RightProblem</h1>
 
-<p align="center"><strong>看清现在最该解决什么，把事情往前推进。</strong></p>
+<p align="center"><strong>找对当前问题，推进真正进展。</strong></p>
 
 <p align="center"><a href="README.md">English</a></p>
 
-RightQuestion 帮助 AI 助手跳出问题的表面说法，判断当前最值得处理什么，然后产生实际进展。根据任务不同，它可以给出答案或建议、找到原因、制定计划、修改文件，或者执行经过授权的操作。
+RightProblem 帮助 AI 助手跳出问题的表面说法，判断当前最值得处理什么，然后产生实际进展。根据任务不同，它可以给出答案或建议、找到原因、制定计划、修改文件，或者执行经过授权的操作。
 
 你不需要懂提示词、Agent，也不需要会编程。
 
@@ -12,7 +12,7 @@ RightQuestion 帮助 AI 助手跳出问题的表面说法，判断当前最值�
 
 > **你问：** 我已经上过三门课了，却还是做不完一个作品集项目。我要不要再买一门课？
 
-RightQuestion 会先判断目前真正阻碍进展的是什么。AI 助手可能让你用一个小项目暴露第一个具体阻力，再根据得到的证据判断是否值得继续买课。
+RightProblem 会先判断目前真正阻碍进展的是什么。AI 助手可能让你用一个小项目暴露第一个具体阻力，再根据得到的证据判断是否值得继续买课。
 
 复杂的比较留在内部，你会直接得到判断和可以采取的下一步。
 
@@ -30,16 +30,16 @@ RightQuestion 会先判断目前真正阻碍进展的是什么。AI 助手可能
 如果你的 AI 助手支持 Agent Skills，把下面这句话发给它，让它自己完成安装：
 
 ```text
-请把 https://github.com/lilwind7/RightQuestion 里的 right-question Agent Skill 安装到我的个人技能中。安装后请验证它可以使用，并告诉我最简单的用法。除非你确实无法完成，否则不要让我自己运行终端命令。
+请把 https://github.com/lilwind7/RightProblem 里的 right-problem Agent Skill 安装到我的个人技能中。安装后请验证它可以使用，并告诉我最简单的用法。除非你确实无法完成，否则不要让我自己运行终端命令。
 ```
 
 如果你使用 Codex，可以直接在对话框粘贴：
 
 ```text
-$skill-installer 请从 https://github.com/lilwind7/RightQuestion 安装 right-question
+$skill-installer 请从 https://github.com/lilwind7/RightProblem 安装 right-problem
 ```
 
-安装后，直接自然地描述问题或任务即可；在 Codex 中也可以使用 `$right-question`，在 Claude Code 或 Cursor 中可以使用 `/right-question`。AI 助手会在这套方法能明显改善结果时使用它。
+安装后，直接自然地描述问题或任务即可；在 Codex 中也可以使用 `$right-problem`，在 Claude Code 或 Cursor 中可以使用 `/right-problem`。AI 助手会在这套方法能明显改善结果时使用它。
 
 需要针对不同 Agent 的具体说明，或者想手动安装？请查看[安装指南](INSTALL.zh-CN.md)。
 
@@ -62,7 +62,7 @@ $skill-installer 请从 https://github.com/lilwind7/RightQuestion 安装 right-q
 
 ## Agent Skill 是什么
 
-Agent Skill 可以理解为一套 AI 助手在需要时会采用的“做事方法”。RightQuestion 遵循开放的 [Agent Skills](https://agentskills.io/) 格式，可以在 Codex、Claude Code、Cursor 和 Gemini CLI 中使用。RightQuestion 本身只包含可移植的指令；具体任务需要的工具仍然遵守 AI 助手原有的权限规则。
+Agent Skill 可以理解为一套 AI 助手在需要时会采用的“做事方法”。RightProblem 遵循开放的 [Agent Skills](https://agentskills.io/) 格式，可以在 Codex、Claude Code、Cursor 和 Gemini CLI 中使用。RightProblem 本身只包含可移植的指令；具体任务需要的工具仍然遵守 AI 助手原有的权限规则。
 
 ## 参与贡献
 

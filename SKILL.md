@@ -1,14 +1,14 @@
 ---
-name: right-question
+name: right-problem
 description: Reframe a potentially misframed request into the most useful current working problem, then answer or act to make the most valuable progress available now. Use when wording, an assumed cause, a proposed solution, limited options, or repeated effort may point the agent at the wrong work. For open-ended goals, advance the best current step without claiming the whole goal is solved. Skip simple factual requests and well-framed execution tasks.
 license: MIT
 metadata:
-  version: "3.0.0"
+  version: "4.0.0"
 ---
 
-# RightQuestion
+# RightProblem
 
-Find what matters most now, then move it forward.
+Find the right problem. Make the next useful move.
 
 Use the user's intended outcome as direction, not as a promise that one invocation can complete a long-term goal. Treat the selected working problem as the best current hypothesis under the available evidence and constraints. Reason deeply enough to choose well, then keep the user's experience simple.
 

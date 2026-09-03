@@ -1,6 +1,6 @@
-# Contributing to RightQuestion
+# Contributing to RightProblem
 
-RightQuestion should remain small, portable, and behaviorally sharp. Contributions are most useful when they improve how the skill identifies what matters most now and creates meaningful progress without overstating certainty or completion.
+RightProblem should remain small, portable, and behaviorally sharp. Contributions are most useful when they improve how the skill identifies what matters most now and creates meaningful progress without overstating certainty or completion.
 
 ## Good contributions
 
